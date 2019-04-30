@@ -2,15 +2,22 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 
-const StyledLineItem = styled.div`
+const StyledLineItem = styled.a`
   list-style: none;
   padding: 10px;
-
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
+  text-decoration: none;
+  color: inherit;
 `
+
+const StyledP = styled.p`
+  font-size: 10px;
+`
+
+const StyledFlexBox = styled.div`
+  display: flex;
+`
+
+const StyledContainer = styled.div``
 
 export default function Data() {
   const [data, setData] = useState({ hits: [] })
@@ -39,22 +46,20 @@ export default function Data() {
         />
         <button onClick={() => setQuery(input)}>find</button>
       </div>
-      <div className='red browser'>
+      <div className='browser'>
         <ul>
           {data.hits.map(item => {
             const tags = item._tags
-            console.log(tags)
+            console.log(item.objectID)
             return (
-              <StyledLineItem key={item.objectID}>
-                <a href={item.url}>
-                  <p>{item.title}</p>
-                  <p>{item.created_at}</p>
-                  <div>
-                    {item._tags.map(tag => (
-                      <p>{tag}</p>
-                    ))}
-                  </div>
-                </a>
+              <StyledLineItem href={item.url} key={item.objectID}>
+                <p>{item.title}</p>
+                <p>{item.created_at}</p>
+                <StyledFlexBox>
+                  {tags.map(tag => (
+                    <StyledP>{tag}</StyledP>
+                  ))}
+                </StyledFlexBox>
               </StyledLineItem>
             )
           })}

@@ -1,7 +1,6 @@
-import React from 'react'
 import styled from 'styled-components'
 
-const StyledContainer = styled.section`
+export const StyledGrid = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,15 +12,7 @@ const StyledContainer = styled.section`
   grid-template-rows: repeat(10, 77px);
   grid-template-columns: repeat(3, 1fr) 30%;
   grid-gap: 1px;
-
-  .red {
-    background-color: red;
-    font-size: 20px;
-    color: #fff;
-    font-family: 'Roboto', sans-serif;
-    border-radius: 2px;
-    height: 100%;
-  }
+  font-size: 14px;
 
   .header {
     grid-row: 1 / 2;
@@ -47,11 +38,13 @@ const StyledContainer = styled.section`
     grid-row: 3/ 10;
     grid-column: 1/ 2;
     overflow: scroll;
+    height: 100%;
   }
 
   .main-content {
     grid-row: 2 / 10;
     grid-column: 2 / 5;
+    height: 100%;
   }
 
   .footer {
@@ -59,7 +52,3 @@ const StyledContainer = styled.section`
     grid-column: 1 / -1;
   }
 `
-
-export default function Container({ children }) {
-  return <StyledContainer>{children}</StyledContainer>
-}
